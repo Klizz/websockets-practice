@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node index.js"
+    "dev": "nodemon --exec babel-node index.js",
+    "build:client": "node rollup.config.js"
   },
+  "browser": true,
   "author": "Karen",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.8.7",
     "body-parser": "^1.19.0",
-    "core-js": "^3.6.4",
+    "core-js": "^2.6.11",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pug": "^2.0.4",
@@ -20,6 +20,7 @@
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "nodemon": "^2.0.2",
