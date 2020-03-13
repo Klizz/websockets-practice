@@ -15,16 +15,11 @@ APP.set('views', './src/server/views');
 APP.set('view engine', 'pug');
 APP.use(bodyParser.json());
 
+const activeUsers = [];
+
 const io = socketio(SERVER);
-
 io.set('transports', ['websocket', 'polling']);
-io.on('connection', socketHandler(io));
-
-const users = [];
-const chatApp = {
-    io,
-    users
-};
+io.on('connection', socketHandler(activeUsers, io));
 
 APP.get('/', (req, res) => {
   res.render("home");
