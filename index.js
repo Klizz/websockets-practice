@@ -16,10 +16,11 @@ APP.set('view engine', 'pug');
 APP.use(bodyParser.json());
 
 const activeUsers = [];
+const sentMessages = [];
 
 const io = socketio(SERVER);
 io.set('transports', ['websocket', 'polling']);
-io.on('connection', socketHandler(activeUsers, io));
+io.on('connection', socketHandler(activeUsers, sentMessages, io));
 
 APP.get('/', (req, res) => {
   res.render("home");
